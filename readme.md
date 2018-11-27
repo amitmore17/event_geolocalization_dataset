@@ -31,7 +31,7 @@ where ```exp_data``` is a python dictionary containing experimental data with fo
  	the tuple (\mu_x, \mu_y), these coordinates can be added into the camera/event coordinates to get corresponding coordinates on the surface of the earth (in meters). 
  	
  * **sensor_data**:  
- 	tuple containing ```(camera_x_coordinate, camera_y_coordinate, camera_orientation, camera_gps_error)```. 
+ 	tuple containing ```(camera_x_coordinate, camera_y_coordinate, camera_orientation, camera_magnetometer_strength, camera_gps_error_variance)```. 
  	Each variable is a 2D array of size TxN such that (t,n) entry represents data for n^{th} camera for time instant t. 
  	
  * **event_track**:  
@@ -43,7 +43,7 @@ where ```exp_data``` is a python dictionary containing experimental data with fo
 	raw gps sensor measurements during the experiment in following format
  		[gps_data_cam_0, gps_data_cam_1, ..., gps_data_cam_(N-2), gps_data_cam_(N-1), gps_data_event] if "is_event_track_gps_available" is True else [gps_data_cam_0, gps_data_cam_1, ..., gps_data_cam_(N-2), gps_data_cam_(N-1)]
  		each field in above list is as below
- 		gps_data_cam_x: [data(0), data(1), ... ] where data(t) is [UTC timestamp since unix epoch, Latitude, Longitude, GPSError, Altitude]
+ 		gps_data_cam_x: [data(0), data(1), ... ] where data(t) is [UTC timestamp since unix epoch, Latitude, Longitude, GPSError_std, Altitude]
  		Note: sampling frequency for gps data is 1Hz. 
  		
  	* compass_data:  
