@@ -5,7 +5,7 @@ Please refer following paper for details on the experiments in this dataset:
 "A Pseudo-likelihood Approach For Geo-localization of Events From Crowd-sourced Sensor-Metadata".
 
 The metadata corresponding to the ith experiment can be found in "dataset/exp_i.pk".  
-The information about the corresponding video files can be found in "video_info/exp_i.pk".  
+The information about the video files can be found in "video_info/exp_i.pk".  
 The individual files can be read using python2.7 pickle syntax as shown in ```read_data.py``` and ```read_video_info.py```, respectively. 
 
 ## Sensor Metadata
@@ -58,8 +58,8 @@ The file "dataset/exp_i.pk" contains dictionary with following fields:
     
 ## Video Data
 The file "video_info/exp_i.pk" contains a dictionary with information about video recordings. 
-Each entry in the dictionary is a list of length N (or N+1 if *is_event_track_gps_available* is True)
-The video recordings are also available to [download](https://github.com/amitmore17)
+Each entry in the dictionary is a list of length N (or N+1 if *is_event_track_gps_available* is True).
+The video recordings are also available to [download](https://github.com/amitmore17).
 
 * **start_timestamps**:  
 	a list containing sequence of *UTC timestamp since unix epoch* indicating time when the individual video recordings started.
@@ -80,7 +80,7 @@ The video recordings are also available to [download](https://github.com/amitmor
 	a list containing sequence of time durations in milliseconds indicating durations of individual event video recordings. 
 
 Please refer ```read_video_info.py``` for more details.
-Further, whenever an experiment have *is_event_track_gps_available* to be True, the last entries in the above lists corresponds to a video camera moving along with the event. 
+Whenever an experiment have *is_event_track_gps_available* to be True, the last entries in the above lists corresponds to a video camera moving along with the event. 
 
 ## Authors
 
