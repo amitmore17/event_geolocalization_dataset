@@ -4,14 +4,12 @@
 Please refer following paper for details on the experiments in this dataset:  
 "A Pseudo-likelihood Approach For Geo-localization of Events From Crowd-sourced Sensor-Metadata".
 
-The dataset corresponding to the ith experiment is titled "exp_i.pk".  
-File can be read using python2.7 pickle syntax as shown below. 
-```
-with open('./exp_i.pk','rb') as fp:
-	exp_data = pickle.load(fp) 
-```
-where ```exp_data``` is a python dictionary containing experimental data with following fields: 
+The metadata corresponding to the ith experiment can be found in "dataset/exp_i.pk".  
+The information about the corresponding video files can be found in "video_info/exp_i.pk".  
+The individual files can be read using python2.7 pickle syntax as shown in ```read_data.py``` and ```read_video_info.py```, respectively. 
 
+## Sensor Metadata
+The file "dataset/exp_i.pk" contains dictionary with following fields:
 * **geovid_server_query_parameters**:
 
 	its a tuple containing parameters ```(start_date,start_time,end_date,end_time,SW_lat,SW_lng,NE_lat,NE_lng,location_timezone_UTC)``` used for searching the videos of the experiments uploaded on the geovid.org server.  
@@ -19,7 +17,7 @@ where ```exp_data``` is a python dictionary containing experimental data with fo
 	Please refer "Sakire Arslan Ay, Lingyan Zhang, Seon Ho Kim, Ma He, and Roger Zimmermann. 2009. GRVS: A georeferenced video search engine. In ACM Proc. Multimedia. 977–978" for more details on how to use these parameters for creating a query url and searching the videos and sensor data. 
  
  * **is_event_track_gps_available**:  
- 	this filed indicates whether gps data for the event track is available.
+ 	this field indicates whether gps data for the event track is available.
  	 
  * **number_of_cameras**:  
  	number of cameras, N, video recording the event.
@@ -58,7 +56,32 @@ where ```exp_data``` is a python dictionary containing experimental data with fo
  		each field in above list is as below
  		accelerometer_data_cam_x: [data(0), data(1), ... ,data(T-2),data(T-1)] where data(t) is [UTC timestamp since unix epoch, ax, ay, az, (ax\*ax, ay\*ay, az\*az)\*\*.5] where (ax,ay,az) is a magnetometer measurement. 
     
-    
+## Video Data
+The file "video_info/exp_i.pk" contains a dictionary with information about video recordings. 
+Each entry in the dictionary is a list of length N (or N+1 if *is_event_track_gps_available* is True)
+The video recordings are also available to [download](https://github.com/amitmore17)
+
+* **start_timestamps**:  
+	a list containing sequence of *UTC timestamp since unix epoch* indicating time when the individual video recordings started.
+	 
+* **stop_timestamps**:  
+	a list containing sequence of *UTC timestamp since unix epoch* indicating time when the individual video recordings ended. 
+	
+* **video_durations**:  
+	a list containing sequence of time durations in milliseconds indicating durations of individual video recordings. 
+	
+* **start_offsets**:  
+	a list containing sequence of offset values in milliseconds with respect to *start_timestamps* indicating when the event video recordings started. 
+	
+* **stop_offsets**:  
+	a list containing sequence of offset values in milliseconds with respect to *stop_timestamps* indicating when the event video recordings ended. 
+	
+* **event_recording_durations**:  
+	a list containing sequence of time durations in milliseconds indicating durations of individual event video recordings. 
+
+Please refer ```read_video_info.py``` for more details.
+Further, whenever an experiment have *is_event_track_gps_available* to be True, the last entries in the above lists corresponds to a video camera moving along with the event. 
+
 ## Authors
 
 * **Amit More** - [amitmore17](https://github.com/amitmore17)
