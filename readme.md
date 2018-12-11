@@ -59,7 +59,7 @@ The file "dataset/exp_i.pk" contains dictionary with following fields:
 ## Video Data
 The file "video_info/exp_i.pk" contains a dictionary with information about video recordings. 
 Each entry in the dictionary is a list of length N (or N+1 if *is_event_track_gps_available* is True).
-The video recordings are also available to [download](https://github.com/amitmore17).
+The video recordings are also available to [download](https://drive.google.com/drive/folders/1PKgPant8NpUEoSBITOMgyyjgYlXdAOjv?ogsrc=32).
 
 * **start_timestamps**:  
 	a list containing sequence of *UTC timestamp since unix epoch* indicating time when the individual video recordings started.
